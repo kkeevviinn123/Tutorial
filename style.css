@@ -155,17 +155,18 @@ code {
 
   nav ul li a {
     width: 100%;
-    font-size: 0.95rem;
-    padding: 10px;
+    font-size: 0.85rem;
+    padding: 8px 12px;
+    border-radius: 12px;
   }
 
   header h1 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     padding: 0 10px;
   }
 
   main {
-    margin-top: 180px;
+    margin-top: 200px;
     padding: 0 12px;
   }
 }
