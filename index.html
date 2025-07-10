@@ -1,0 +1,279 @@
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tutorial de Instalação do N8N</title>
+  <link rel="stylesheet" href="style.css" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+
+</head>
+
+<body>
+  <div id="particles-js"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 60, density: { enable: true, value_area: 800 } },
+        color: { value: "#3b82f6" },
+        shape: { type: "circle" },
+        opacity: { value: 0.3 },
+        size: { value: 4, random: true },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: "#60a5fa",
+          opacity: 0.3,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 2,
+          direction: "none",
+          random: false,
+          out_mode: "out"
+        }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "repulse" },
+          onclick: { enable: false },
+          resize: true
+        },
+        modes: {
+          repulse: { distance: 100, duration: 0.4 }
+        }
+      },
+      retina_detect: true
+    });
+  </script>
+  <header>
+    <h1 data-text="Tutorial de Instalação do N8N no VPS">Tutorial de Instalação do N8N no VPS</h1>
+    <nav>
+      <ul id="navMenu">
+        <li><a href="#passo1">Acessando o WHM</a></li>
+        <li><a href="#passo2">Criando Domínio</a></li>
+        <li><a href="#passo3">Gerando Certificados SSL</a></li>
+        <li><a href="#passo4">Criando Sub-domínios</a></li>
+        <li><a href="#passo5">Configurando Docker-Compose e NGINX</a></li>
+      </ul>
+    </nav>
+
+
+    <button id="darkModeToggle" aria-label="Alternar modo escuro" title="Alternar modo escuro">
+  🌙
+</button>
+
+
+
+  </header>
+
+  <main id="tutorialContainer">
+
+    <div class="step" id="passo1">
+      <h2>Acessando o WHM</h2>
+      <p>Já na página principal "Início", clique no lado esquerdo em "Hospedagens e servidores".</p>
+      <p>Em lista de produtos clique no botão verde "Painel WHM".</p>
+      <p>Irá abrir o login no WHM, deve-se solicitar a senha com o responsável.</p>
+      <figure><img src="img/1.jpg" alt=""><figcaption>Acessando o painel WHM</figcaption></figure>
+      <figure><img src="img/2.jpg" alt=""><figcaption>Página inicial do WHM</figcaption></figure>
+      <figure><img src="img/3.jpg" alt=""><figcaption>Menu lateral do WHM</figcaption></figure>
+      <figure><img src="img/4.jpg" alt=""><figcaption>Botão para login no painel</figcaption></figure>
+      <figure><img src="img/5.jpg" alt=""><figcaption>Tela de autenticação do WHM</figcaption></figure>
+    </div>
+
+    <div class="step" id="passo2">
+      <h2>Criando Domínio</h2>
+      <p>Em "Search Tools and Accounts (/)", no canto superior direito, pesquise por "Listar contas".</p>
+      <p>Clique em "Criar uma nova conta" e preencha os dados do domínio.</p>
+      <p>Selecione "Português do Brasil" e confirme a criação.</p>
+      <figure><img src="img/6.jpg" alt=""><figcaption>Buscando contas no WHM</figcaption></figure>
+      <figure><img src="img/7.jpg" alt=""><figcaption>Lista de contas existente</figcaption></figure>
+      <figure><img src="img/8.jpg" alt=""><figcaption>Botão de criar nova conta</figcaption></figure>
+      <figure><img src="img/9.jpg" alt=""><figcaption>Preenchendo dados do domínio</figcaption></figure>
+      <figure><img src="img/10.jpg" alt=""><figcaption>Selecionando idioma</figcaption></figure>
+      <figure><img src="img/11.jpg" alt=""><figcaption>Confirmação da criação</figcaption></figure>
+    </div>
+
+    <div class="step" id="passo3">
+      <h2>Criando Subdomínio</h2>
+      <p>Pesquise por DNS e clique em "DNS Zone Manager".</p>
+      <p>Escolha o domínio e clique em "A record".</p>
+      <p>Preencha com o nome do subdomínio e IP: 162.240.149.224.</p>
+      <p>Clique em "Adicionar um registro A" para confirmar.</p>
+      <figure><img src="img/12.jpg" alt=""><figcaption>Acessando o DNS Zone Manager</figcaption></figure>
+      <figure><img src="img/13.jpg" alt=""><figcaption>Selecionando domínio</figcaption></figure>
+      <figure><img src="img/14.jpg" alt=""><figcaption>Adicionando A record</figcaption></figure>
+      <figure><img src="img/15.jpg" alt=""><figcaption>Preenchendo o subdomínio</figcaption></figure>
+      <figure><img src="img/16.jpg" alt=""><figcaption>Confirmação do registro</figcaption></figure>
+    </div>
+
+    <div class="step" id="passo4">
+      <h2>Gerando Certificados SSL</h2>
+      <p>Na nova conta criada, clique em "Vá para o cPanel".</p>
+      <p>Na aba "Tools", clique em "SSL/TLS Status".</p>
+      <p>Clique em "Run AutoSSL" para gerar os certificados.</p>
+      <p>Se a imagem do status mostrar certificados ativos, está tudo certo.</p>
+      <figure><img src="img/17.jpg" alt=""><figcaption>Acesso ao cPanel</figcaption></figure>
+      <figure><img src="img/18.jpg" alt=""><figcaption>Aba de ferramentas</figcaption></figure>
+      <figure><img src="img/19.jpg" alt=""><figcaption>Status SSL/TLS</figcaption></figure>
+      <figure><img src="img/20.jpg" alt=""><figcaption>Botão Run AutoSSL</figcaption></figure>
+      <figure><img src="img/21.jpg" alt=""><figcaption>Certificado emitido com sucesso</figcaption></figure>
+    </div>
+
+    <div class="step" id="passo5">
+      <h2>Configurando Docker e NGINX</h2>
+      <p>Abra o terminal no servidor e crie a pasta da aplicação.</p>
+      <p>Crie um arquivo <code>docker-compose.yml</code> com o conteúdo abaixo.</p>
+      <p>Em seguida, crie o arquivo <code>nginx.conf</code> com a configuração do proxy.</p>
+      <p>Use o comando <code>docker compose up -d</code> na pasta correta.</p>
+
+      <figure><img src="img/22.jpg" alt=""><figcaption>Acessando o terminal do servidor</figcaption></figure>
+      <figure><img src="img/23.jpg" alt=""><figcaption>Criação da estrutura de diretórios</figcaption></figure>
+      <figure><img src="img/24.jpg" alt=""><figcaption>Início do docker-compose.yml</figcaption></figure>
+      <figure><img src="img/25.jpg" alt=""><figcaption>Configuração dos serviços n8n</figcaption></figure>
+      <figure><img src="img/26.jpg" alt=""><figcaption>Configuração dos volumes e redes</figcaption></figure>
+      <figure><img src="img/27.jpg" alt=""><figcaption>Configuração do nginx.conf</figcaption></figure>
+      <figure><img src="img/28.jpg" alt=""><figcaption>Executando docker compose up</figcaption></figure>
+
+      <h3>Configurações:</h3>
+      <pre><code>services:
+
+# Configurando a imagem do Traefik
+  traefik:
+    image: traefik:v2.10
+    container_name: traefik
+    restart: unless-stopped
+    command:
+      - --api.dashboard=true
+      - --api.insecure=true
+      - --providers.docker=true
+      - --providers.docker.exposedbydefault=false
+      - --entrypoints.web.address=:80
+    ports:
+      - "8880:80"
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - traefik-public
+
+      # Configurando a imagem da instância principal do N8N
+  n8n:
+    image: docker.n8n.io/n8nio/n8n:latest
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik-public"
+      - "traefik.http.routers.n8n.rule=Host(tutorial.unitechlab.com.br)"
+      - "traefik.http.routers.n8n.entrypoints=web"
+      - "traefik.http.services.n8n.loadbalancer.server.port=5678"
+    environment:
+      - N8N_HOST=tutorial.unitechlab.com.br
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=https
+      - WEBHOOK_URL=https://tutorial.unitechlab.com.br/
+      - NODE_ENV=production
+      - GENERIC_TIMEZONE=${GENERIC_TIMEZONE}
+      - TZ=${GENERIC_TIMEZONE}
+      - N8N_BASIC_AUTH_ACTIVE=true
+      - N8N_BASIC_AUTH_USER=${BASIC_AUTH_USER}
+      - N8N_BASIC_AUTH_PASSWORD=${BASIC_AUTH_PASSWORD}
+      - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+      - N8N_RUNNER_ENABLED=true
+      - N8N_DIAGNOSTICS_ENABLED=false
+      - N8N_VERSION_NOTIFICATIONS_ENBLED=false
+    volumes:
+      - n8n_data:/home/node/.n8n
+      - ./local-files:/files
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
+    networks:
+      - traefik-public
+
+# Configurando a imagem de outra instância do N8N
+  n8n-1:
+    image: docker.n8n.io/n8nio/n8n:latest
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik-public"
+      - "traefik.http.routers.n8n.rule=Host(n8n.tutorial.unitechlab.com.br)"
+      - "traefik.http.routers.n8n.entrypoints=web"
+      - "traefik.http.services.n8n.loadbalancer.server.port=5678"
+    environment:
+      - N8N_HOST=n8n.tutorial.unitechlab.com.br
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=https
+      - WEBHOOK_URL=https://n8n.tutorial.unitechlab.com.br/
+      - NODE_ENV=production
+      - GENERIC_TIMEZONE=${GENERIC_TIMEZONE}
+      - TZ=${GENERIC_TIMEZONE}
+      - N8N_BASIC_AUTH_ACTIVE=true
+      - N8N_BASIC_AUTH_USER=${BASIC_AUTH_USER}
+      - N8N_BASIC_AUTH_PASSWORD=${BASIC_AUTH_PASSWORD}
+      - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+      - N8N_RUNNER_ENABLED=true
+      - N8N_DIAGNOSTICS_ENABLED=false
+      - N8N_VERSION_NOTIFICATIONS_ENBLED=false
+    volumes:
+      - n8n_data_1:/home/node/.n8n
+      - ./local-files:/files
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
+    networks:
+      - traefik-public
+
+# Configurando os volumes de dados
+volumes:
+  n8n_data:
+  n8n_data_1:
+  traefik_data:
+
+# Configurando a rede docker
+networks:
+  traefik-public:
+    driver: bridge
+
+</code></pre>
+
+      <h3>Bloco do nginx.conf:</h3>
+      <pre><code>adicionar estas linha ao http {} dentro do arquivo nginx.conf:
+
+    server {
+        listen 80;
+        server_name tutorial.unitechlab.com.br n8n.tutorial.unitechlab.com.br;
+        return 301 https://$host$request_uri;
+    }
+
+    server {
+        listen 443 ssl;
+        server_name tutorial.unitechlab.com.br n8n.tutorial.unitechlab.com.br;
+
+        ssl_certificate /var/cpanel/ssl/apache_tls/tutorial.unitechlab.com.br/combined;
+        ssl_certificate_key /var/cpanel/ssl/apache_tls/tutorial.unitechlab.com.br/combined;
+
+    location / {
+            proxy_pass http://127.0.0.1:8880;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto "https";
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+        }
+    }</code></pre>
+    </div>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
